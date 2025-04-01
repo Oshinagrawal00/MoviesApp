@@ -20,4 +20,12 @@ class MovieDaoRepository(private val movieDao: MovieDao) {
             movieDao.saveMovies(movieSaved)
         }
     }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun remove(movieSaved: Int) {
+        withContext(Dispatchers.IO) {
+            movieDao.deleteMovie(movieSaved)
+        }
+    }
 }

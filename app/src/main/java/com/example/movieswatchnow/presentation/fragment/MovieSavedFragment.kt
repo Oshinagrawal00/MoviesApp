@@ -20,6 +20,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.Timer
+import kotlin.concurrent.schedule
 
 class MovieSavedFragment : Fragment(R.layout.fragment_movies_list) {
 
@@ -55,7 +57,7 @@ class MovieSavedFragment : Fragment(R.layout.fragment_movies_list) {
                 launchMovieDetail(it)
             }
             onButtonClickListner = {
-                addToSavedList(it)
+                removeFromSavedList(it)
             }
         }
         binding.movieList.adapter = movieListAdapter
@@ -73,8 +75,6 @@ class MovieSavedFragment : Fragment(R.layout.fragment_movies_list) {
         }
     }
 
-
-
     private fun launchMovieDetail(movie: Movie?) {
         moviesViewModel.setMovieItemId(movie?.id.toString(), movie?.poster_path.toString())
 
@@ -86,9 +86,13 @@ class MovieSavedFragment : Fragment(R.layout.fragment_movies_list) {
             .commit()
     }
 
-    fun addToSavedList(movie: Movie?) {
+    private fun removeFromSavedList(movie: Movie?) {
         if (movie != null) {
-            moviesDaoViewModel.insert(movie)
+            movie.id?.let { moviesDaoViewModel.removeMovie(it) }
+        }
+
+        Timer().schedule(2000) {
+            initMovieLiveDataObserver()
         }
     }
 }

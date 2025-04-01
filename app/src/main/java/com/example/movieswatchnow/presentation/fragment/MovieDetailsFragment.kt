@@ -1,5 +1,7 @@
 package com.example.movieswatchnow.presentation.fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,9 +12,10 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.movieswatchnow.R
 import com.example.movieswatchnow.core.extensions.viewBinding
 import com.example.movieswatchnow.databinding.FragmentMovieDetailBinding
-import com.example.movieswatchnow.domain.Genres
 import com.example.movieswatchnow.domain.MovieDetails
-import com.example.movieswatchnow.domain.SpokenLanguages
+import com.example.movieswatchnow.presentation.utils.MovieHelperUtil.getGenresList
+import com.example.movieswatchnow.presentation.utils.MovieHelperUtil.getOriginCountry
+import com.example.movieswatchnow.presentation.utils.MovieHelperUtil.getSpokenLanguages
 import com.example.movieswatchnow.presentation.viewmodel.MovieViewModel
 
 class MovieDetailsFragment : Fragment(R.layout.fragment_movie_detail) {
@@ -35,7 +38,7 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_detail) {
         }
     }
 
-    fun initMovieDetails(movieDetails: MovieDetails) {
+    private fun initMovieDetails(movieDetails: MovieDetails) {
         binding.apply {
             imageViewMoviePoster.apply {
 
@@ -58,35 +61,53 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_detail) {
             movieName.text = "Movie : ${movieDetails.title}"
             movieDescription.text = "Description : ${movieDetails.overview}"
             adultRated.text = "Adult Allowed : ${movieDetails.adult.toString()}"
-            releasesDate.text = "Releases Date : ${movieDetails.releaseDate}"
-            imdbRating.text = "IMDB : ${movieDetails.imdbId}"
+
+            releasesDate.text = movieDetails.releaseDate?.let {
+                "Releases Date : ${it}"
+            } ?: run {
+                "Releases Date : 31/01/2000"
+            }
+            imdbRating.text = movieDetails.imdbId?.let {
+                "IMDB : ${it}"
+            } ?: run {
+                "IMDB : 1"
+            }
+
             genres.text = "Genres : " + getGenresList(movieDetails.genres)
             budget.text = "Box Office Budget : ${movieDetails.budget}"
             spokenLanguages.text =
-                "Spoken Languages :" + getSpokenLanguages(movieDetails.spokenLanguages)
-            originalCountry.text = "Original Country :" + movieDetails.originCountry.firstOrNull()
+                "Spoken Languages : " + getSpokenLanguages(movieDetails.spokenLanguages)
+            originalCountry.text =
+                "Original Country : " + getOriginCountry(movieDetails.originCountry)
+
+            visitBtn.setOnClickListener {
+                movieDetails.homepage?.let { it1 -> openUrl(it1) }
+            }
+            shareBtn.setOnClickListener {
+                movieDetails.homepage?.let { it1 -> shareLink(it1) }
+            }
         }
     }
 
-    private fun getSpokenLanguages(spokenLanguages: ArrayList<SpokenLanguages>): Any? {
-        var spokenLanguage = ""
-        spokenLanguages.forEach {
-           spokenLanguage = spokenLanguage + it.name + ", "
-        }
-        return spokenLanguage
-
+    private fun openUrl(url: String) {
+        val uri = Uri.parse(url)
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(intent)
     }
 
-    private fun getGenresList(genres: ArrayList<Genres>): String {
-        var genreString = ""
-        genres.forEach {
-            genreString = genreString + it.name + ", "
+    private fun shareLink(url: String) {
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            putExtra(Intent.EXTRA_TEXT, url)
+            type = "text/plain"
         }
-        return genreString
-
+        val shareIntent = Intent.createChooser(
+            intent, null
+        )
+        startActivity(shareIntent)
     }
 
-    fun getMovieDetails() {
+
+    private fun getMovieDetails() {
         moviesViewModel.movieItemId.value?.let {
             moviesViewModel.getMovieDetail(it)
         }

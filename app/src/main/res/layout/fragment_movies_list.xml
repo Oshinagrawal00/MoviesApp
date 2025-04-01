@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:text="Trending Movies"
         android:textColor="@color/white"
-        android:textSize="40dp"
+        android:textSize="30dp"
         android:id="@+id/screenHeader">
 
     </TextView>

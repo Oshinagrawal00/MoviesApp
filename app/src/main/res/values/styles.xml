@@ -3,4 +3,8 @@
     <style name="Light_HighEmphasis_Subtitle_2">
         <item name="android:textSize">14sp</item>
     </style>
+    <style name="Light_HighEmphasis_Subtitle_3">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

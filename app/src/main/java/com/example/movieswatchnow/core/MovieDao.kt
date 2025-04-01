@@ -12,6 +12,9 @@ interface MovieDao {
     @Insert
     fun saveMovies(movie: Movie)
 
+    @Query("DELETE FROM Movie WHERE id = :movie")
+    fun deleteMovie(movie: Int)
+
     @Query("SELECT * FROM Movie ORDER BY id ASC")
     fun getSavedMovieList(): List<Movie>
 

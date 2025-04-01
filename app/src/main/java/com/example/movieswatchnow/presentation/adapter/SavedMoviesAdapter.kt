@@ -1,6 +1,7 @@
 package com.example.movieswatchnow.presentation.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -49,8 +50,12 @@ class SavedMoviesAdapter : PagingDataAdapter<Movie, RecyclerView.ViewHolder>(dif
         holder.binding.imageViewMoviePoster.setOnClickListener {
             onShipmentCardClickListener?.invoke(movie)
         }
-        holder.binding.saveMovie.setOnClickListener {
-            onButtonClickListner?.invoke(movie)
+        holder.binding.apply {
+            saveMovie.visibility = View.VISIBLE
+            saveMovie.text = "Delete"
+            saveMovie.setOnClickListener {
+                onButtonClickListner?.invoke(movie)
+            }
         }
     }
 
@@ -61,7 +66,7 @@ class SavedMoviesAdapter : PagingDataAdapter<Movie, RecyclerView.ViewHolder>(dif
                 newItem: Movie
             ): Boolean {
                 return true
-                //oldItem.orderNo == newItem.orderNo
+                oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(

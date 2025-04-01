@@ -10,10 +10,12 @@ import kotlinx.coroutines.launch
 
 class MovieDaoViewModel(private val repository: MovieDaoRepository) : ViewModel() {
 
-    //val allWords: List<Movie> = repository.movieItems
-
     fun insert(word: Movie) = viewModelScope.launch {
         repository.insert(word)
+    }
+
+    fun removeMovie(movie: Int) = viewModelScope.launch {
+        repository.remove(movie)
     }
 }
 
