@@ -16,6 +16,7 @@ import com.example.movieswatchnow.presentation.adapter.SavedMoviesAdapter
 import com.example.movieswatchnow.presentation.viewmodel.MovieDaoViewModel
 import com.example.movieswatchnow.presentation.viewmodel.MovieViewModel
 import com.example.movieswatchnow.presentation.viewmodel.MovieViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,6 +24,7 @@ import kotlinx.coroutines.withContext
 import java.util.Timer
 import kotlin.concurrent.schedule
 
+@AndroidEntryPoint
 class MovieSavedFragment : Fragment(R.layout.fragment_movies_list) {
 
     private val binding by viewBinding(FragmentMoviesListBinding::bind)

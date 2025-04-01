@@ -6,8 +6,9 @@ import com.example.movieswatchnow.domain.MovieDetails
 import com.example.movieswatchnow.domain.MovieList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class MoviesDataSource {
+class MoviesDataSource @Inject constructor() {
 
     private val moviesService: MoviesService = APIInstance.createService(MoviesService::class.java)
 

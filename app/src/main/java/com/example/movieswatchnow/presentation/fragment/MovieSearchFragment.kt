@@ -14,11 +14,12 @@ import com.example.movieswatchnow.presentation.adapter.MovieListAdapter
 import com.example.movieswatchnow.presentation.viewmodel.MovieDaoViewModel
 import com.example.movieswatchnow.presentation.viewmodel.MovieViewModel
 import com.example.movieswatchnow.presentation.viewmodel.MovieViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MovieSearchFragment : Fragment(R.layout.fragment_movie_search) {
 
     private val binding by viewBinding(FragmentMovieSearchBinding::bind)
-
 
     private val moviesViewModel: MovieViewModel by activityViewModels()
     private var movieListAdapter: MovieListAdapter? = null

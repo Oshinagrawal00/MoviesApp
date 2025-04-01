@@ -9,7 +9,9 @@ import com.example.movieswatchnow.presentation.fragment.MovieListFragment
 import com.example.movieswatchnow.presentation.fragment.MovieSavedFragment
 import com.example.movieswatchnow.presentation.fragment.MovieSearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     lateinit var bottomNav : BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {

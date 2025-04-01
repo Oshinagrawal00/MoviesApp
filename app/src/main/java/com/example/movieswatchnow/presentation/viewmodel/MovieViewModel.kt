@@ -6,10 +6,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.movieswatchnow.data.datasource.MoviesDataSource
 import com.example.movieswatchnow.domain.MovieDetails
 import com.example.movieswatchnow.domain.MovieList
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MovieViewModel : BaseViewModel() {
-    val movieData = MoviesDataSource()
+@HiltViewModel
+class MovieViewModel @Inject constructor(private val movieData : MoviesDataSource): BaseViewModel() {
+
     val movieListLiveData = MutableLiveData<MovieList>()
     val movieSearchedLiveData = MutableLiveData<MovieList>()
     val movieItemId = MutableLiveData<String>()

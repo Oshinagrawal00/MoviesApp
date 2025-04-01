@@ -17,7 +17,9 @@ import com.example.movieswatchnow.presentation.utils.MovieHelperUtil.getGenresLi
 import com.example.movieswatchnow.presentation.utils.MovieHelperUtil.getOriginCountry
 import com.example.movieswatchnow.presentation.utils.MovieHelperUtil.getSpokenLanguages
 import com.example.movieswatchnow.presentation.viewmodel.MovieViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MovieDetailsFragment : Fragment(R.layout.fragment_movie_detail) {
 
     private val binding by viewBinding(FragmentMovieDetailBinding::bind)
