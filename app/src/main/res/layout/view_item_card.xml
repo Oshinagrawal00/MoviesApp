@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content"
+    android:background="@color/gray999ea4"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_8dp"
+    android:layout_margin="@dimen/_8dp">
+
+
+
+    <ImageView
+        android:id="@+id/imageViewMoviePoster"
+        android:layout_width="@dimen/movieItemWidth"
+        android:layout_height="@dimen/movieItemHeight"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@id/saveMovie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_movie_image"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_4dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSizeMedium"
+        app:layout_constraintEnd_toEndOf="@id/imageViewMoviePoster"
+        app:layout_constraintStart_toStartOf="@id/imageViewMoviePoster"
+        app:layout_constraintTop_toBottomOf="@id/imageViewMoviePoster"
+        tools:text="Batman" />
+
+    <TextView
+        android:id="@+id/movieName"
+        style="@style/Light_HighEmphasis_Subtitle_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_16dp"
+        android:layout_marginTop="@dimen/padding_4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="@dimen/textSizeMedium"
+        tools:src="@color/white"
+        android:layout_marginEnd="@dimen/padding_16dp"
+        app:layout_constraintStart_toStartOf="@id/imageViewMoviePoster"
+        app:layout_constraintTop_toBottomOf="@id/imageViewMoviePoster"
+        app:layout_goneMarginStart="@dimen/_0dp"
+        app:layout_goneMarginTop="@dimen/padding_16dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveMovie"
+        android:text="Bookmark"
+        android:visibility="gone"
+        android:layout_marginLeft="@dimen/_4dp"
+        app:layout_constraintStart_toEndOf="@id/imageViewMoviePoster"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewMoviePoster">
+    </Button>
+</androidx.constraintlayout.widget.ConstraintLayout>

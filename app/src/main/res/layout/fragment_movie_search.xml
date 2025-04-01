@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <TextView
+        android:id="@+id/searchText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_16dp"
+        android:text="Search a Movie"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+
+    <EditText
+        android:id="@+id/editSearchWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="name"
+        android:hint="Enter your query..."
+        android:inputType="text"
+        android:padding="@dimen/_8dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/searchText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/adultContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_16dp"
+        android:text="Is it Adult Related Content"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editSearchWord" />
+
+    <RadioGroup
+        android:id="@+id/radioAdultContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/adultContent"
+        app:layout_constraintTop_toBottomOf="@id/editSearchWord">
+
+        <RadioButton
+            android:id="@+id/radio_pirates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes" />
+
+        <RadioButton
+            android:id="@+id/radio_ninjas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/languageText"
+        android:textColor="@color/white"
+        android:padding="@dimen/padding_16dp"
+        android:text="Preferred Language: "
+        app:layout_constraintTop_toBottomOf="@id/adultContent">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/languageEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="name"
+        android:padding="@dimen/padding_16dp"
+        android:hint="Preferred Language :"
+        android:inputType="text"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/languageText"
+        app:layout_constraintTop_toBottomOf="@id/radioAdultContent" />
+
+    <Button
+        android:id="@+id/searchBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Movie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/languageEditText"></Button>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movieList"
+        style="@style/Light_HighEmphasis_Subtitle_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchBtn"
+        tools:listitem="@layout/view_item_card" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
