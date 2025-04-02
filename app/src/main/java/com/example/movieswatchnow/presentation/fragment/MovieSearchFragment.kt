@@ -3,6 +3,7 @@ package com.example.movieswatchnow.presentation.fragment
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.movieswatchnow.MoviesApplication
@@ -35,6 +36,9 @@ class MovieSearchFragment : Fragment(R.layout.fragment_movie_search) {
         binding.searchBtn.setOnClickListener {
             getMovieSearchList()
         }
+        val languages = resources.getStringArray(R.array.drop_down_menu)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, languages)
+        binding.autoCompleteTextView.setAdapter(arrayAdapter)
     }
 
     private fun initAdapter() {
@@ -71,7 +75,7 @@ class MovieSearchFragment : Fragment(R.layout.fragment_movie_search) {
             moviesViewModel.getMovieSearch(
                 editSearchWord.text.toString(),
                 radioAdultContent.checkedRadioButtonId == R.id.radio_pirates,
-                languageEditText.text.toString()
+                autoCompleteTextView.text.toString()
             )
         }
     }

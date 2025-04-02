@@ -75,26 +75,33 @@
 
     </TextView>
 
-    <EditText
-        android:id="@+id/languageEditText"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="@dimen/autoCompleteWidth"
         android:layout_height="wrap_content"
-        android:autofillHints="name"
-        android:padding="@dimen/padding_16dp"
-        android:hint="Preferred Language :"
-        android:inputType="text"
+        android:id="@+id/inputLayout"
         android:textColor="@color/white"
+        android:padding="@dimen/padding_8dp"
         app:layout_constraintStart_toEndOf="@id/languageText"
-        app:layout_constraintTop_toBottomOf="@id/radioAdultContent" />
+        app:layout_constraintTop_toBottomOf="@id/adultContent">
+        <AutoCompleteTextView
+            android:layout_width="@dimen/searchBarWidth"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:id="@+id/autoCompleteTextView"
+            android:text="English">
+        </AutoCompleteTextView>
 
+    </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:id="@+id/searchBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16dp"
         android:text="Search Movie"
+        android:padding="@dimen/margin_16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/languageEditText"></Button>
+        app:layout_constraintTop_toBottomOf="@id/inputLayout"></Button>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movieList"

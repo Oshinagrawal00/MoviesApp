@@ -62,7 +62,8 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_detail) {
             }
             movieName.text = "Movie : ${movieDetails.title}"
             movieDescription.text = "Description : ${movieDetails.overview}"
-            adultRated.text = "Adult Allowed : ${movieDetails.adult.toString()}"
+            adultRated.text = if (movieDetails.adult == true) { "Adult Content : Yes"}
+            else {"Adult Content : No" }
 
             releasesDate.text = movieDetails.releaseDate?.let {
                 "Releases Date : ${it}"

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MoviesWatchNow</string>
+
+    <string-array name="drop_down_menu">
+        <item>en-US</item>
+        <item>German</item>
+        <item>French</item>
+    </string-array>
 </resources>
