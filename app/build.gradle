@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.movieswatchnow"
+    namespace = "com.myapp.movieswatchnow"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.movieswatchnow"
+        applicationId = "com.myapp.movieswatchnow"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
