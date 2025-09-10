@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "219682615525",
+    "project_id": "movies-watch-now",
+    "storage_bucket": "movies-watch-now.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219682615525:android:221d2cecca484dc725640c",
+        "android_client_info": {
+          "package_name": "com.myapp.movieswatchnow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9fi60pOfKvznf3N2yjee5johQBXhOn6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
